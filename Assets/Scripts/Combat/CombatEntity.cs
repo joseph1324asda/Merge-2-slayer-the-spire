@@ -200,6 +200,17 @@ namespace Merge2.Combat
             CurrentHP = Math.Min(MaxHP, CurrentHP + amount);
         }
 
+        public void Revive(int amount)
+        {
+            if (amount <= 0 || IsAlive)
+            {
+                return;
+            }
+
+            CurrentHP = Math.Min(MaxHP, amount);
+            ActionGauge = 0;
+        }
+
         public void RefreshDynamicHealth()
         {
             ClampHealthToMax();

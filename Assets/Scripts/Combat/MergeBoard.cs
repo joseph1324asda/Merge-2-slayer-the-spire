@@ -53,6 +53,16 @@ namespace Merge2.Combat
             return equipmentItems.Remove(item);
         }
 
+        public void Clear()
+        {
+            foreach (ICombatEffect effect in GetAllEffects())
+            {
+                effect.Unregister();
+            }
+
+            equipmentItems.Clear();
+        }
+
         public CombatStats GetAggregateStats()
         {
             CombatStats total = new CombatStats();
